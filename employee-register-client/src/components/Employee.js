@@ -51,10 +51,10 @@ const { addOrEdit} = props
 
     const validate = () => {
         let temp = {}
-        temp.employeeName = values.employeeName==""?false:true;
-        temp.imageSrc = values.imageSrc==defaultImageSrc?false:true;
+        temp.employeeName = values.employeeName===""?false:true;
+        temp.imageSrc = values.imageSrc===defaultImageSrc?false:true;
         setErrors(temp)
-        return Object.values(temp).every(x => x == true)
+        return Object.values(temp).every(x => x === true)
     }
 
     const resetForm = () => {
@@ -77,7 +77,7 @@ const { addOrEdit} = props
     }
 
     // invalid-field is class errors from css
-    const applyErrorClass = field => ((field in errors && errors[field]==false)?' invalid-field':'')
+    const applyErrorClass = field => ((field in errors && errors[field]===false)?' invalid-field':'')
 
     return (
         <>

@@ -10,6 +10,9 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Add CORS -> Cross Origin Resources Sharing
+builder.Services.AddCors();
+
 // inject the database
 builder.Services.AddDbContext<EmployeeDbContext>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("DevConnection")));
@@ -21,6 +24,11 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    app.UseCors(options => options.WithOrigins("http://localhost:3000")
+    .AllowAnyMethod()
+    .AllowAnyHeader());
+
 }
 
 app.UseHttpsRedirection();

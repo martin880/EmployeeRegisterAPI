@@ -4,11 +4,11 @@ import axios from "axios";
 
 export default function EmployeeList(){
 
-    const employeeAPI = (url = '') => {
+    const employeeAPI = (url = 'https://localhost:7104/api/Employee') => {
         return{
             fetchAll: () => axios.get(url),
             create: newRecord => axios.post(url, newRecord),
-            update: (id, updateRecord) => axios => put(url + id, updateRecord),
+            update: (id, updateRecord) => axios.put(url + id, updateRecord),
             delete: id => axios.delete(url + id)
         }
     }
